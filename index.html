@@ -12,7 +12,7 @@
     <title>Mini WP</title>
   </head>
   <body>
-    <div class="container bg-light">
+    <div class="container bg-light d-none">
     <header>
         <nav>
             <div class="row">
@@ -56,13 +56,14 @@
     <main>
         <div class="row">
             <div class="col-sm-2 bg-danger p-2 d-none d-sm-block d-flex flex-column" style="height: 87vh;">
-                <ul class="li">Dashboard</a></ul>
-                <ul class="li">My Profile</ul>
-                <ul class="li">My Series</ul>
-                <ul class="li">My Post</ul>
-                <ul class="li">Calender</ul>
+                <li id="l1">Dashboard</li>
+                <li id="l2">My Profile</li>
+                <li id="l3">My Series</li>
+                <li id="l4">My Post</li>
+                <li id="l5">Calender</li>
             </div>
             <div class="col-sm-10">
+              <div id="my-series">
                 <h3 class="p-3">My Series</h3>
                 <hr>
                 <div class="row d-flex justify-content-center p-2">
@@ -70,7 +71,8 @@
                     <div class="col-sm m-3 p-3 card" style="background-color: sandybrown; width: 18rem;">mantul</div>
                     <div class="col-sm m-3 p-3 card" style="background-color: seagreen; width: 18rem;">mantul</div>
                 </div>
-                <hr>
+              </div>
+              <div id="my-post">
                 <h3 class="p-3">My Post</h3>
                 <hr>
                 <div class="row d-flex justify-content-center p-2">
@@ -78,7 +80,8 @@
                     <div class="col-sm m-3 p-3 card" style="background-color: sandybrown; width: 18rem;">mantul</div>
                     <div class="col-sm m-3 p-3 card" style="background-color: seagreen; width: 18rem;">mantul</div>
                 </div>
-                <hr>
+              </div>
+              <div id="my-calender">
                 <h3 class="p-3">My Calender</h3>
                 <hr>
                 <div class="row d-flex justify-content-center p-2">
@@ -86,10 +89,43 @@
                     <div class="col-sm m-3 p-3 card" style="background-color: sandybrown; width: 18rem;">mantul</div>
                     <div class="col-sm m-3 p-3 card" style="background-color: seagreen; width: 18rem;">mantul</div>
                 </div>
+              </div>
+              
+              <div id="my-profile">
+                <div class="card">
+                  <h5 class="card-header">My Profile</h5>
+                  <div class="card-body">
+                    <h5 class="card-title">About Me</h5>
+                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugiat officia est consectetur totam earum id architecto in mollitia rem! Ipsa omnis aliquam sapiente tempora a maiores voluptatum ducimus ullam veniam.</p>
+                    <a href="#" class="btn btn-light">My Github</a>
+                  </div>
+                </div>
+              </div>
             </div>
         </div>
     </main>
     <footer class="fixed-bottom bg-primary">Mantul</footer>
+    </div>
+
+    <div id="publishedPage" class="container d-nonen">
+      <header>
+        <nav>
+          <div class="logo">Mini WP</div>
+          <div class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              My Profile
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="#">Dashboard</a>
+              <a class="dropdown-item" href="#">My Series</a>
+              <a class="dropdown-item" href="#">My Post</a>
+              <a class="dropdown-item" href="#">Logout</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="#">Help</a>
+            </div>
+          </div>  
+        </nav>
+      </header>
     </div>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
