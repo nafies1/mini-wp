@@ -49,5 +49,3 @@ new Vue({
         this.getArticles()
     }
 })
-
-
