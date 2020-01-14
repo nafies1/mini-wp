@@ -27,15 +27,11 @@
                           <div class="collapse navbar-collapse" id="navbarSupportedContent">
                             <ul class="navbar-nav mr-auto">
                               <li class="nav-item active">
-                                <a class="nav-link" href="#">Add Post <span class="sr-only">(current)</span></a>
-                              </li>
-                              <li class="nav-item">
-                                <!-- <a class="nav-link" href="#"><img src="images.png" class="img-fluid" alt="Responsive image" style="max-width: 40px;"></a> -->
-                                <a href="#" class="nav-link">My Profile</a>
+                                <a class="nav-link" href="#" @click="showCard('addArticle')">Add Article <span class="sr-only">(current)</span></a>
                               </li>
                               <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                  Menu
+                                  My Profile
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                   <a class="dropdown-item" href="#">My Profile</a>
@@ -52,28 +48,33 @@
 
               </div>
           </nav>
-
       </header>
       <main>
           <div class="row">
               <div class="col-sm-2 bg-danger p-2 d-none d-sm-block d-flex flex-column" style="height: 87vh;">
-                  <li id="l1">Dashboard</li>
-                  <li id="l2">My Profile</li>
-                  <li id="l3">My Series</li>
-                  <li id="l4">My Post</li>
-                  <li id="l5">Calender</li>
+                  <li id="l1" @click="showAll">Dashboard</li>
+                  <li id="l2" @click="showCard('myProfile')">My Profile</li>
+                  <li id="l3" @click="showCard('mySeries')">My Series</li>
+                  <li id="l4" @click="showCard('myPost')">My Post</li>
+                  <li id="l5" @click="showCard('myCalender')">Calender</li>
               </div>
               <div class="col-sm-10">
-                <div id="my-series">
+                <div id="my-series" v-if="mySeries">
                   <h3 class="p-3">My Series</h3>
                   <hr>
                   <div class="row d-flex justify-content-center p-2">
-                      <div class="col-sm m-3 p-3 card" style="background-color: salmon; width: 18rem;">Mantul</div>
-                      <div class="col-sm m-3 p-3 card" style="background-color: sandybrown; width: 18rem;">mantul</div>
-                      <div class="col-sm m-3 p-3 card" style="background-color: seagreen; width: 18rem;">mantul</div>
+                    <!-- Looped part -->
+                    <div class="card col-sm" v-for="article in articles" :key="article.id">
+                      <h5 class="card-header">{{article.title}}</h5>
+                      <div class="card-body">
+                        <p class="card-text">{{article.content}}</p>
+                        <a href="#" class="btn btn-light">Edit this article</a>
+                      </div>
+                    </div>                    
+                    <!-- Looped part -->
                   </div>
                 </div>
-                <div id="my-post">
+                <div id="my-post" v-if="myPost">
                   <h3 class="p-3">My Post</h3>
                   <hr>
                   <div class="row d-flex justify-content-center p-2">
@@ -82,7 +83,7 @@
                       <div class="col-sm m-3 p-3 card" style="background-color: seagreen; width: 18rem;">mantul</div>
                   </div>
                 </div>
-                <div id="my-calender">
+                <div id="my-calender" v-if="myCalender">
                   <h3 class="p-3">My Calender</h3>
                   <hr>
                   <div class="row d-flex justify-content-center p-2">
@@ -92,7 +93,7 @@
                   </div>
                 </div>
                 
-                <div id="my-profile">
+                <div id="my-profile" v-if="myProfile">
                   <div class="card">
                     <h5 class="card-header">My Profile</h5>
                     <div class="card-body">
@@ -102,22 +103,37 @@
                     </div>
                   </div>
                 </div>
+
+                <div id="addArticle" v-if="addArticle">
+                  <form>
+                    <h1>Add Article</h1>
+                    <div class="form-group">
+                      <label for="titleForm">Title</label>
+                      <input type="text" class="form-control" id="titleForm" placeholder="Title">
+                    </div>
+                    <div class="form-group">
+                      <label for="contentForm">Content</label>
+                      <textarea class="form-control" id="contentForm" rows="3" placeholder="Write your article here..."></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                  </form>
+                </div>
               </div>
           </div>
       </main>
-      <footer class="fixed-bottom bg-primary">Mantul</footer>
+      <!-- <footer class="fixed-bottom bg-primary">Mantul</footer> -->
       </div>
 
       <div id="publishedPage" class="container" v-else-if="currentPage === 'publishedPage'">
         <header>
           <nav>
-            <div class="logo">Mini WP</div>
+            <!-- <div class="logo">Mini WP</div> -->
             <div class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 My Profile
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="#">Dashboard</a>
+                <a class="dropdown-item" href="#" @click="showDashboard()">Dashboard</a>
                 <a class="dropdown-item" href="#">My Series</a>
                 <a class="dropdown-item" href="#">My Post</a>
                 <a class="dropdown-item" href="#">Logout</a>
@@ -128,9 +144,11 @@
           </nav>
         </header>
       </div>
+      <button @click="pageSelector('dashboard')">Dashboard</button>
+      <button @click="pageSelector('publishedPage')">Published Page</button>
     </div>
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+
+    <!-- Scripts -->
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
