@@ -13,6 +13,21 @@
   </head>
   <body>
     <div id="app" class="container">
+      <!-- INI LOGIN PAGE -->
+      <div id="login-page" v-if="currentPage  === 'login'">
+        <h1>Login</h1>
+        <form>
+          <label for="email">Email</label>
+          <input type="email" name="email" placeholder="email@email.com" v-model="email">
+          <br>
+          <label for="password">Password</label>
+          <input type="password" name="password" placeholder="password" v-model="password">
+          <input type="submit" name="submit">
+        </form>
+      </div>
+
+
+      <!-- INI DASHBOARD -->
       <div id="dashboard" class="container bg-light" v-if="currentPage  === 'dashboard'">
       <header>
           <nav>
@@ -123,7 +138,7 @@
       </main>
       <!-- <footer class="fixed-bottom bg-primary">Mantul</footer> -->
       </div>
-
+      <!-- INI PUBLISHED PAGE -->
       <div id="publishedPage" class="container" v-else-if="currentPage === 'publishedPage'">
         <header>
           <nav>

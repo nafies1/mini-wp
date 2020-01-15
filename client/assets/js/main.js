@@ -2,13 +2,15 @@ new Vue({
     el: '#app',
     data:{
         message: 'Mantap jiwa!',
-        currentPage: 'publishedPage',
+        currentPage: 'login',
         articles: '',
         mySeries: false,
         myPost: false,
         myCalender: false,
         myProfile: false,
-        addArticle: false
+        addArticle: false,
+        email: '',
+        password: ''
 
     },
     methods:{
