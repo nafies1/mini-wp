@@ -10,7 +10,7 @@ class UserController{
                 console.log(users);                
                 if (!users.length) {
                     next({
-                        status: 400,
+                        status: 404,
                         message: 'No user found'
                     })
                 }
