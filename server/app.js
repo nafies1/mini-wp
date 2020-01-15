@@ -1,5 +1,7 @@
 require('dotenv').config()
 
+console.log(process.env.NODE_ENV);
+
 const express = require('express')
 const app = express()
 const routes = require('./routes')
@@ -23,7 +25,11 @@ app.use('/', routes)
 
 app.use((err, req, res, next)=>{
     let status = err.status || 500
-    console.log(err);    
+    console.log(err);
+    if (err.message === "jwt malformed") {
+      err.message = 'Token is invalid'; 
+      status = 400
+    }
     res.status(status).json(err.message)
 })
 

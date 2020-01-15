@@ -8,8 +8,6 @@ module.exports = (req, res, next)=>{
     
     Article.findOne({_id : articleId})
         .then(article=>{
-            console.log(article, "ini di otorisasi");
-            
             if (article) {
                 if (article.ownerId == userId) {
                     next()

@@ -51,7 +51,52 @@ class ArticleController{
             })
     }
 
+    static update(req, res, next){
+        const {title, content} = req.body
+        Article.findByIdAndUpdate(req.params.id, {
+            title,
+            content
+        })
+            .then(article=>{
+                console.log(article);
+                res.status(200).json({
+                    article,
+                    msg: 'Article updated'
+                })
+            })
+            .catch(err=>{
+                console.log(err);
+                next(err)
+            })
+    }
 
+    static publish(req, res, next){
+        const {published} = req.body
+        Article.findByIdAndUpdate(req.params.id, {published})
+            .then(article=>{
+                res.status(200).json({
+                    article,
+                    msg: `Article with title ${article.title} has been published`
+                })
+            })
+            .catch(err=>{
+                next(err)
+            })
+    }
+
+    static delete(req,res,next){
+        Article.findByIdAndDelete(req.params.id)
+            .then(article=>{
+                res.status(200).json({
+                    article,
+                    msg: 'Delete success'
+                })
+            })
+            .catch(err=>{
+                console.log(err);                
+                next(err)
+            })
+    }
 }
 
 module.exports = ArticleController
