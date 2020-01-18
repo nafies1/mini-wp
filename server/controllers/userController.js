@@ -1,35 +1,28 @@
 const User = require('../models/user')
-const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
 const {OAuth2Client} = require('google-auth-library');
+const bcrypt = require('bcryptjs')
+const salt = bcrypt.genSaltSync(10)
 
 class UserController{
     static getUsers(req,res,next){
-        if(req.headers.admin !== 'cumaadminyangbisa'){
-            next({
-                status: 401,
-                message: "Not Authorized. Only admin can see data of users"
-            })
-        } else{
-            User.find({})
-            .then(users=>{
-                console.log(users);                
-                if (!users.length) {
-                    next({
-                        status: 404,
-                        message: 'No user found'
-                    })
-                }
-                else {
-                    res.status(200).json(users)
-                }
-            })
-            .catch(err=>{
-                console.log(err);
-                next(err)
-            })
-        }
-        
+        User.find({})
+        .then(users=>{
+            console.log(users);                
+            if (!users.length) {
+                next({
+                    status: 404,
+                    message: 'No user found'
+                })
+            }
+            else {
+                res.status(200).json(users)
+            }
+        })
+        .catch(err=>{
+            console.log(err);
+            next(err)
+        })
     }
 
     static register(req,res,next){
@@ -51,6 +44,7 @@ class UserController{
               next(err)
           })
     }
+
     static login(req,res,next){
         const {email, password} = req.body
         User.findOne({email})
@@ -83,7 +77,7 @@ class UserController{
     }
     static googleSign(req, res, next){        
         let payload
-        let status
+        let status = {}
         const client = new OAuth2Client(process.env.CLIENT_ID);
         client.verifyIdToken({
             idToken: req.body.id_token,
@@ -120,7 +114,73 @@ class UserController{
                 next(err)
             })
     }
-}
+
+    static getOneUser(req,res,next){
+        User.findById(req.params.id)
+          .then(user=>{
+              console.log(user);
+              res.status(200).json({
+                  user,
+                  msg: 'Get one user success'
+                })
+          })
+          .catch(err=>{
+              next(err)
+          })
+    }
+
+    static updateUser(req,res,next){
+        const {name, email, password} = req.body
+        User.findByIdAndUpdate(req.params.id, {
+            name,
+            email,
+            password
+        })
+          .then(user=>{
+              console.log(user);
+              res.status(200).json({
+                  user,
+                  msg: 'Update success'
+                })
+          })
+          .catch(err=>{
+              next(err)
+          })
+    }
+
+    static changePassword(req,res,next){
+        let {password} = req.body
+        const hash = bcrypt.hashSync(password, salt)
+        password = hash
+        User.findByIdAndUpdate(req.params.id, {
+            password
+        })
+          .then(user=>{
+              console.log(user);
+              res.status(200).json({
+                  user,
+                  msg: 'Change Password success'
+                })
+          })
+          .catch(err=>{
+              next(err)
+          })
+    }
+
+    static deleteUser(req,res,next){
+        User.findByIdAndDelete(req.params.id)
+          .then(user=>{
+              console.log(user);
+              res.status(200).json({
+                  user,
+                  msg: 'Delete user success'
+                })
+          })
+          .catch(err=>{
+              next(err)
+          })
+    }
+} // end of class UserController
 
 module.exports = UserController
 
