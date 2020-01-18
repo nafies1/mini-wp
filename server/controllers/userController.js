@@ -5,7 +5,13 @@ const {OAuth2Client} = require('google-auth-library');
 
 class UserController{
     static getUsers(req,res,next){
-        User.find({})
+        if(req.headers.admin !== 'cumaadminyangbisa'){
+            next({
+                status: 401,
+                message: "Not Authorized. Only admin can see data of users"
+            })
+        } else{
+            User.find({})
             .then(users=>{
                 console.log(users);                
                 if (!users.length) {
@@ -22,6 +28,8 @@ class UserController{
                 console.log(err);
                 next(err)
             })
+        }
+        
     }
 
     static register(req,res,next){
@@ -95,8 +103,7 @@ class UserController{
                     return User.create({
                         name,
                         email,
-                        password: 'google_sign',
-                        register_date: new Date()
+                        password: 'google_sign'
                     })
                 } else{
                     status.msg = "user found"

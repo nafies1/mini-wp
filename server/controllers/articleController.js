@@ -3,11 +3,11 @@ const Article = require('../models/article')
 class ArticleController{
     static create(req, res, next){
         const {title, content} = req.body
-        const ownerId = req.currentUserId
+        const author = req.currentUserId
         Article.create({
             title,
             content,
-            ownerId,
+            author,
             published : false,
         })
           .then(article =>{

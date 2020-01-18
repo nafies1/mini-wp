@@ -1,4 +1,6 @@
-require('dotenv').config()
+if (process.env.NODE_ENV === 'development') {
+  require('dotenv').config()
+}
 
 console.log(process.env.NODE_ENV);
 
@@ -7,7 +9,9 @@ const app = express()
 const routes = require('./routes')
 
 const mongoose = require('mongoose')
-mongoose.connect('mongodb://localhost:27017/mini-wp', {useNewUrlParser: true, useUnifiedTopology: true});
+// mongoose.connect('mongodb://localhost:27017/mini-wp', {useNewUrlParser: true, useUnifiedTopology: true});
+mongoose.connect(`mongodb+srv://nafies_beta1:${process.env.PASS}@cluster0-hcptc.mongodb.net/mini-wp?retryWrites=true&w=majority`, {useNewUrlParser: true, useUnifiedTopology: true});
+
 mongoose.set('useCreateIndex', true)
 
 const db = mongoose.connection;

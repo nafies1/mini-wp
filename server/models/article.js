@@ -6,11 +6,12 @@ const articleSchema = new mongoose.Schema({
         type: String,
         minlength: [30, 'Your article is too short. Minimum characters is 30']
     },
-    ownerId: {
+    author: {
         type: Schema.Types.ObjectId,
         ref: 'User'
     },
     published: Boolean,
+    featured_image: String
 },{
     timestamps: {
         createdAt: 'created_at',

@@ -9,4 +9,8 @@ router.get('/', (req, res)=>{
 router.use('/user', userRoute)
 router.use('/article', articleRoute)
 
+router.use('*', (req, res)=>{
+    res.status(404).json('Route not found')
+})
+
 module.exports = router
