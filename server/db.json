@@ -1,0 +1,38 @@
+{
+    "articles": [
+        {
+            "id": 1,
+            "title": "Belajar Vue",
+            "content": "Belajar Vue dengan membuat frontend App Mini-WP",
+            "created_at": "2020-01-11"
+        },
+        {
+            "id": 2,
+            "title": "Belajar React",
+            "content": "Belajar React dengan membuat frontend App Mini-WP",
+            "created_at": "2020-01-11"
+        },
+        {
+            "id": 3,
+            "title": "Belajar Angular",
+            "content": "Belajar Angular dengan membuat frontend App Mini-WP",
+            "created_at": "2020-01-12"
+        }
+    ],
+    "comments":[
+        {
+            "id": 1,
+            "body": "comments",
+            "articleId": 1
+        },
+        {
+            "id": 2,
+            "body": "comments",
+            "articleId": 2
+        }
+
+    ],
+    "profile": {
+        "name": "master"
+    }
+}
