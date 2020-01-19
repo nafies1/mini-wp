@@ -1,11 +1,15 @@
 <template>
-    <div>ini login</div>
+    <formLogin></formLogin>
 </template>
 
 <script>
-export default {
-    name: 'App'
+import formLogin from '../components/form'
 
+export default {
+    name: 'Login Page',
+    components:{
+        formLogin
+    }
 }
 </script>
 
