@@ -4,11 +4,13 @@ class ArticleController{
     static create(req, res, next){
         const {title, content} = req.body
         const author = req.currentUserId
+        const featured_image = req.file.cloudStoragePublicUrl
         Article.create({
             title,
             content,
             author,
             published : false,
+            featured_image
         })
           .then(article =>{
               console.log(article);

@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "mini-wp-by-nafie-1579010838091",
+  "private_key_id": "a3ddc4ebcbaeda3658bc2db30e9e199a8fbe572f",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQCprlxGAVVbrKm4\nimrSBlv+94ljuJGml7e5cL8XKHN3DuIIUUDU4je3e+bGjrbjeejNzgZBs5Hz85rY\nY1UsVbzs72XcoAqn0sPw/h2aCAO1WIzgdrXI4taltb7IH0xQfhodN4IQbTLWfoPn\nuej3NOP3q31II4P7JaPuZyCjN7XC8SBprpSXjywPjpdA+zg4l+2qqSD+WkYOvHi4\nh8dOztRFy3/rIQqo8WoVa+FPg4JmGzkFzhWtr7sKzlskTNUwSk5TkY2cLwn7PNwp\nxrI9sPTn1wKHE5lzwu6fZsv5dw6rXl4eo/KQX+s9lclMxHP1m2dwuENOcGfPH2Pq\nAYVCy09NAgMBAAECggEAB6zj7qS7zDhMuxTDzTlNawSeedzM9diyDljbw/vn8TBC\nqDaotJiBBbM8lqm4+yQ2FC0oGku5o+vWisg/f5BnSd5wYKD6qmm9xEZyZ1fKdycI\nxFSKV4pvRDKq7RmBVbjGjKDIqN6PqKUzaUV/FMOXNkpTEfLNUwx6VFvk3Y01ExrL\nPY5HNpvNjD7dPP0M7MWa5WuT09xeRJ78Ra2pEOxMXEHmRKeu7bw9aRY6rlkK0r3N\nYGY1KvSb3NpyQ1I7NRNJhtI7ngKcmUImK8Yq15VQdEOOh7U0g1GYniMbwUirA2Ae\n+xr3IJCA63oH6m/bY7ZLIAodqXsVK4Bfz+cAJEjqYQKBgQDiXoFBB8C/gCli4FU+\nzERoZv57gcqw1bN98PFhKoi2y2aUmI+eFEpVth6fP5oKZrgdoAhrC87wPFrxUEla\n12JlBAgZ/bTHxz088O+ikaApxJKqemalanGpO8HUjhARYQMKZA+XlgPS1Hhwc9hU\nHAZcgqxxFd7D1VvuvXVXh8bnUQKBgQC/5EW93/FMTWJmQqh8cHf9ukcZxOjc8RRN\nJfrEC7ew4bIeWo9jN9l0izOLU/DLTk4RwGUHfkae5emqs3VKpxnb6pC19kfygiv4\nsVHOG10r5Fsz4xND3qYIv2uizP2GKOHsjthiGYXOZ+jwUTENBL52zUv3N0CgV2ly\n0YudD5jhPQKBgCUm5YfKwfOsER7NOrBnzgJkhPe4QY/sQt00oikUVgPKNjfFIi0L\nn3eZwETap2l1mloiXb9T3M7I2RQp3SAvoVJ66ul5HiZ7qK1LzcicpfC09m1MUXRs\nl+Lyj8lW14RCq8EU0wpJ8K61eF7cZHDJeLHOMIcO09TIO6JfLdcDzb1BAoGAOxh6\n3fHUpxIB5spKhyA/49T1Rptct4ZLIUM8ChottPyc1TpAhGbTwk+ITTVJp+Lyqgbd\nVkRuTUsy/g4MZjQ2A4Mmk9NH7whlsE4zikzlEbpe2AjrivBLo9AHvvhwb1ux0B9h\nxjxj9+AKXdAzUfYPDhlFdtn+PiMNZ33fCDygcWUCgYBP3mbAiV6mSUQPGsNj531v\neK828Ri4vrJ6U2fjpyU9o+LYXGQohfVZZ0LAKsTVdrZOQImDQhX3eL/BbhNjXtSy\nBOpeq25nCiMmrpXwjEpp8ix7yzSzpiVlfCg9/okk4FBjkAh4X3zl6MWjWcqoTBQ4\nHSDSrQuHvEJioTxPPFsacA==\n-----END PRIVATE KEY-----\n",
+  "client_email": "mini-wp-featured-image@mini-wp-by-nafie-1579010838091.iam.gserviceaccount.com",
+  "client_id": "116108734045386456374",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/mini-wp-featured-image%40mini-wp-by-nafie-1579010838091.iam.gserviceaccount.com"
+}
