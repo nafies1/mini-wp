@@ -1,6 +1,6 @@
 # mini-wp
 
-Base url : **http://localhost:3000**
+Base url : **http://api-mini-wp.nafies.tech/**
 
 ### Home
 Route | Method | Request(s) | Response(s) | Description
