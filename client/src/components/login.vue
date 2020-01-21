@@ -34,7 +34,7 @@
 
                     <b-button type="submit" variant="primary">Submit</b-button>
                     <br>
-                    <small>or sign in with your google account</small>
+                    <small>Don't have an account ? <a href="#" @click.prevent="changePage('register')">Register here</a> or sign in with your google account</small>
                     <div class="g-signin2" data-onsuccess="onSignIn"></div>
                     <a href="#" @click.prevent="logout"></a>
                     <!-- <a href="#" @click="signOut">Sign out</a> -->
@@ -58,6 +58,7 @@ export default {
         failed: false
       }
     },
+    props: ['currentPage'],
     methods: {
       onSubmit() {
         console.log(this.email, this.password);
@@ -71,6 +72,7 @@ export default {
         })
           .then(({data}) =>{
             console.log(data)
+            this.changePage('dashboard')
             localStorage.setItem('access_token', data.token);
             this.success = true
             this.message = 'Login success'
@@ -87,37 +89,6 @@ export default {
         this.email = ''
         this.password = ''
       },
-      // onSignIn(googleUser) {
-      // const id_token = googleUser.getAuthResponse().id_token;
-      // console.log(id_token);
-      // axios({
-      //   method: 'post',
-      //   url: `/user/google-sign`,
-      //   headers: {
-      //       id_token
-      //   }
-      // })
-      //   .then(({ data }) => {
-      //     if(data.token){
-      //         localStorage.setItem('access_token', data.token);
-      //         console.log(data);
-      //         this.email = ''
-      //         this.password = ''
-      //         // this.changePage('dashboard')
-      //     }
-            
-      //   })
-      //   .catch(err => {
-      //     console.log(err)
-      //   })
-      // },
-      // signOut() {
-      // const auth2 = gapi.auth2.getAuthInstance();
-      // auth2.signOut().then(() => {
-      //   console.log('User signed out.');
-      //   localStorage.removeItem("access_token");
-      //   });
-      // },
       changePage(page){
         console.log('dari login page',page);
         this.$emit('change-page', page)

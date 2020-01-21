@@ -1,9 +1,9 @@
 <template>
   <div>
     <!-- <loginVue v-if="currentPage === 'login'" v-on:change-page="changePage"></loginVue> -->
-     <loginVue v-if="currentPage === 'login'" ></loginVue>
-    <registerVue v-if="currentPage === 'register'" ></registerVue>
-    <dashboardVue v-if="currentPage === 'dashboard'" ></dashboardVue>
+     <loginVue v-if="currentPage === 'login'" :currentPage="currentPage" @change-page="changePage"></loginVue>
+    <registerVue v-if="currentPage === 'register'" :currentPage="currentPage" @change-page="changePage"></registerVue>
+    <dashboardVue v-if="currentPage === 'dashboard'" :currentPage="currentPage" @change-page="changePage"></dashboardVue>
     <mainPageVue v-if="currentPage === 'main'" ></mainPageVue>
   </div>
 </template>
@@ -29,8 +29,13 @@ export default {
       } else {
         this.currentPage='login'
       }
-    }
+    },
+    changePage(page){
+      this.currentPage = page
+    },
+
   },
+  
   components: {
     dashboardVue,
     loginVue,

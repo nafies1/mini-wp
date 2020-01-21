@@ -42,7 +42,7 @@
 
                     <b-button type="submit" variant="primary">Submit</b-button>
                     <br>
-                    <small>or sign in with your google account</small>
+                    <small>Have an account ? <a href="#" @click.prevent="changePage('login')">Login here</a> or sign in with your google account</small>
                 </b-form>
             </b-card-text>
         </b-card>
@@ -62,6 +62,7 @@ export default {
         message : ''
       }
     },
+    props: ['currentPage'],
     methods: {
       onSubmit() {
         console.log(this.email, this.password);
@@ -75,16 +76,24 @@ export default {
           }
         })
           .then(({data}) =>{
-            
             console.log(data)
+            this.changePage('dashboard')
+            localStorage.setItem('access_token', data.token);
+            this.success = true
+            this.message = 'Register success'
+            setTimeout(()=>{ this.success = false}, 3000);
           })
           .catch(err=>{
             console.log(err.message);
-            if (err.message === 'Request failed with status code 400') this.message = 'Email / Password salah'
+            if (err.message) this.message = 'Terjadi error'
           })
         this.email = ''
         this.password = ''
         this.name = ''
+      },
+      changePage(page){
+        console.log('dari register page',page);
+        this.$emit('change-page', page)
       }
     }
 }
